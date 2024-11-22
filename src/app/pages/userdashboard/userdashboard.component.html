@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="/MyTrips">My Trips</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href=""(click)="logout()">Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <section class="user-profile">
+            <h2  class="mb-18">Welcome      {{userName}}        </h2>
+
+            <div class="profile-details">    
+                <div>
+                    <button>Edit Profile</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="past-trips">
+            <h3>Your Past Trips</h3>
+            <div class="trip-cards">
+               <div *ngFor="let trip of tripList">
+                <app-my-trips [tripInfo]="trip"></app-my-trips>
+               </div>
+            </div>
+        </section>
+
+        <section class="become-guide">
+            <h3>Interested in Becoming a Guide?</h3>
+            <p>Share your experience, languages, and preferred locations with us.</p>
+            <button (click)="becomeGuide()">Become a Guide</button>
+        </section>
+    </main>
+</div>

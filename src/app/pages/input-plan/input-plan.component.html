@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row">
+
+    <div class="main-container">
+      <div class="form-container">
+
+        <h1>Plan Your Trip</h1>
+        <form (ngSubmit)="sendData()">
+
+          <label for="location">Trip Location:</label>
+
+          <select class="form-control" id="locations" [(ngModel)]="selectedLocation" name="selectedLocation">
+            <option *ngFor="let location of locations" [value]="location.locationName">{{location.locationName}}</option>
+          </select>
+          
+          <label for="travelers">Number of Travelers:</label>
+          <input type="number" id="travelers" [(ngModel)]="travelers" name="travelers" min="1" required>
+
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required>
+
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" [(ngModel)]="endDate" name="endDate" required>
+
+          <label for="tripType">Trip Type:</label>
+          <select id="tripType" [(ngModel)]="tripType" name="tripType">
+            <option value="adventure">Adventure</option>
+            <option value="relaxation">Relaxation</option>
+            <option value="family">Family-friendly</option>
+            <option value="romantic">Romantic</option>
+            <option value="cultural">Cultural exploration</option>
+            <option value="business">Business</option>
+          </select>
+
+          <label for="budget">Budget:</label>
+          <input type="number" id="budget" [(ngModel)]="budget" name="budget" min="0" placeholder="Enter budget in USD"
+            required>
+
+          <label for="accommodation">Preferred Accommodation Type:</label>
+          <select id="accommodation" [(ngModel)]="accommodation" name="accommodation">
+            <option value="hotel">Hotel</option>
+            <option value="hostel">Hostel</option>
+            <option value="airbnb">Airbnb</option>
+            <option value="resort">Resort</option>
+            <option value="camping">Camping</option>
+          </select>
+
+          <label for="activities">Preferred Activities:</label>
+          <input type="text" id="activities" [(ngModel)]="activities" name="activities"
+            placeholder="e.g., sightseeing, hiking">
+
+          <label for="transportation">Transportation Preferences:</label>
+          <select id="transportation" [(ngModel)]="transportation" name="transportation">
+            <option value="plane">Plane</option>
+            <option value="train">Train</option>
+            <option value="car">Rental Car</option>
+            <option value="bus">Bus</option>
+            <option value="public">Public Transit</option>
+          </select>
+
+          <label for="mealPreferences">Meal Preferences:</label>
+          <input type="text" id="mealPreferences" [(ngModel)]="mealPreferences" name="mealPreferences"
+            placeholder="e.g., vegetarian, gluten-free">
+
+          <label for="specialRequirements">Special Requirements:</label>
+          <input type="text" id="specialRequirements" [(ngModel)]="specialRequirements" name="specialRequirements"
+            placeholder="e.g., wheelchair access">
+
+          <label for="tripPace">Trip Pace:</label>
+          <select id="tripPace" [(ngModel)]="tripPace" name="tripPace">
+            <option value="fast">Fast-paced</option>
+            <option value="moderate">Moderate</option>
+            <option value="relaxed">Relaxed</option>
+          </select>
+
+          <button type="submit">Plan My Trip</button>
+        </form>
+      </div>
+
+      <div *ngIf="isLoading" class="loading-animation">
+        <svg class="ip" viewBox="0 0 256 128" width="256px" height="128px" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#5ebd3e" />
+              <stop offset="33%" stop-color="#ffb900" />
+              <stop offset="67%" stop-color="#f78200" />
+              <stop offset="100%" stop-color="#e23838" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+              <stop offset="0%" stop-color="#e23838" />
+              <stop offset="33%" stop-color="#973999" />
+              <stop offset="67%" stop-color="#009cdf" />
+              <stop offset="100%" stop-color="#5ebd3e" />
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke-linecap="round" stroke-width="16">
+            <g class="ip__track" stroke="#ddd">
+              <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
+              <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
+            </g>
+            <g stroke-dasharray="180 656">
+              <path class="ip__worm1" stroke="url(#grad1)" stroke-dashoffset="0"
+                d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
+              <path class="ip__worm2" stroke="url(#grad2)" stroke-dashoffset="358"
+                d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="trip-plan-container">
+        <h2>Your Trip Plan</h2>
+        <br><br>
+        <textarea 
+          *ngIf="!isLoading" 
+          [(ngModel)]="tripPlan" 
+          class="form-control h-75" 
+          rows="5">
+        </textarea>
+      </div>
+      
+
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <ng-container *ngFor="let guide of guides">
+      <ng-container *ngIf="showGuide">
+        <app-guides class="col" 
+        [location]="selectedLocation" [guideinfo]="guide" [tripDate]="startDate" 
+        [budget]="budget" [tripDate]="startDate" [endTripDate]="endDate" 
+        [noOftravelers]="travelers"
+        [tripPlan]="tripPlan"
+        ></app-guides>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+
+</div>

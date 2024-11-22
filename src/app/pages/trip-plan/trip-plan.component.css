@@ -1,0 +1,11 @@
+.custom-button {
+    width: 200px; /* Decrease button width */
+}
+.custom-container {
+    margin-top: 50px; /* Add space from above */
+}
+.button-container {
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Center the button */
+    margin-top: 10px; /* Optional: Add some space above the button */
+}

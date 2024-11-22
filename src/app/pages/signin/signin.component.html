@@ -1,0 +1,43 @@
+<img class="wave" src="wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="bg.svg">
+		</div>
+		<div class="login-content">
+			<form action="index.html">
+				<h2 class="title">Register</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+
+           		   <div class="div">
+           		   		
+           		   		<input type="text" class="input" [(ngModel)]="userName" name="userName" placeholder="Username">
+           		   </div>
+                   
+           		</div>
+
+                   <div class="input-div pass">
+                    <div class="i"> 
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="div">
+                         
+                         <input type="email" class="input" [(ngModel)]="Email" name="Email" placeholder="Email">
+                 </div>
+              </div>
+
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	
+           		    	<input type="password" class="input" [(ngModel)]="Password" name="password" placeholder="Password">
+            	   </div>
+            	</div>
+            	<input type="submit" (click)="registerUser()" class="btn" value="Register">
+            </form>
+        </div>
+    </div>

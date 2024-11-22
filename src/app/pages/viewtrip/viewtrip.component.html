@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+  
+      <div class="main-container">
+        <div class="form-container">
+  
+          <h1>Plan Your Trip</h1>
+          <form (ngSubmit)="sendData()">
+  
+            <label for="location">Trip Location: {{tripDetails.location}}</label>
+            
+            <label for="travelers">Number of Travelers: {{tripDetails.travelers}}</label>
+            <label for="startDate">Start Date: {{tripDetails.startDate}}</label>
+            <label for="endDate">End Date: {{tripDetails.endDate}}</label>
+            <label for="budget">Budget: {{tripDetails.budget}}</label>
+          </form>
+        </div>
+  
+        <div class="trip-plan-container">
+          <h2>Your Trip Plan</h2>
+          <br><br>
+          <textarea 
+            class="form-control h-75" 
+            rows="5">
+            {{tripDetails.tripPlan}}
+          </textarea>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="card custom-card" style="width: 18rem;">
+          <div class="image-container">
+            <img [src]="'data:image/jpeg;base64,' + guides.image" alt="Guide Image" class="rounded-circle" />
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{guides.fullName}}</p>
+            <p>{{guides?.experience?.toString() || 'N/A'}} Years of Experience</p>
+            <p>{{guides.budget}} Charge Per Day</p>
+            <p>Tele:- {{guides.contactNumber}}</p>
+            <p>Email:- {{guides.email}}</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>

@@ -1,0 +1,12 @@
+<div class="col">
+    <div class="circle">
+        <img [src]="'data:image/jpeg;base64,' + guideinfo.image" alt="Guide Image" />
+    </div>
+    <h2>{{guideinfo.fullName}}</h2>
+    <h2>{{guideinfo?.experience?.toString() || 'N/A'}} Years of Experience</h2>
+    <h2>${{guideinfo.budget}} Charge Per Day </h2>
+    <h2>Tele:-{{guideinfo.contactNumber}}</h2>
+    <h2>Email:-{{guideinfo.email}}</h2>
+    <button [ngClass]="isbooked ? 'btn btn-danger ': 'btn btn-primary'" [disabled]="isbooked" (click)="bookGuide(guideinfo.guideId)">{{isbooked ? 'Booked' : 'Book'}}</button>
+    
+  </div>
